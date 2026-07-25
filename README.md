@@ -53,7 +53,7 @@ Windows или антивирус могут показать предупреж
 ## Связь и дневник разработки
 
 - Telegram: https://t.me/LocalModAI
-- YouTube: дневник разработки LocalModAI — ссылка будет добавлена
+- YouTube: дневник разработки LocalModAI — https://www.youtube.com/@LocalModAIProject
 
 ## Статус проекта
 
