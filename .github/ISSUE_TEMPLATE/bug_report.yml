@@ -1,20 +1,37 @@
 name: Сообщить об ошибке
-description: Ошибка или неправильное поведение тестовой сборки LocalModAI
+description: Техническая ошибка или проблема качества Summary в тестовой сборке LocalModAI
 title: "[Ошибка] "
 labels:
   - bug
+
 body:
   - type: markdown
     attributes:
       value: |
-        Спасибо за тестирование LocalModAI. Не публикуйте пароли, платёжные данные и содержимое приватных проектов.
+        Спасибо за тестирование LocalModAI.
+        Перед отправкой отчёта выберите тип проблемы:
+        - TECH BUG — техническая ошибка программы;
+        - SUMMARY QUALITY — технически задача завершилась, но итог неверно понял смысл.
+        Не публикуйте пароли, API-ключи, платёжные данные и содержимое приватных проектов.
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Тип проблемы
+      options:
+        - TECH BUG
+        - SUMMARY QUALITY
+    validations:
+      required: true
+
   - type: input
     id: version
     attributes:
       label: Версия LocalModAI
-      placeholder: v0.5.0-alpha.1
+      placeholder: v0.5.0-alpha.4
     validations:
       required: true
+
   - type: input
     id: windows
     attributes:
@@ -22,39 +39,101 @@ body:
       placeholder: Windows 10 или Windows 11
     validations:
       required: true
+
   - type: input
     id: model
     attributes:
-      label: Локальная модель
-      description: Название GGUF-файла и примерный размер
+      label: Модель
+      description: Точное имя GGUF или API-модели
+      placeholder: Qwen3-4B-Q8_0.gguf / OpenRouter model id
+
+  - type: input
+    id: quant
+    attributes:
+      label: Размер / quantization
+      placeholder: 4B, Q8_0 / 8B, Q4_K_M
+
+  - type: input
+    id: context
+    attributes:
+      label: Context window
+      description: Если известно
+      placeholder: 4096 / 32768 / 262144
+
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Железо
+      description: CPU, GPU, RAM
+      placeholder: CPU / GPU / 32 GB RAM
+
+  - type: dropdown
+    id: source
+    attributes:
+      label: Тип запуска модели
+      options:
+        - Локальная GGUF
+        - API
+        - Другое
+
+  - type: dropdown
+    id: background_type
+    attributes:
+      label: Если проблема фоновой работы — тип
+      options:
+        - Не относится к фоновой работе
+        - BASE
+        - CHECKPOINT
+        - Не знаю
+
   - type: textarea
     id: steps
     attributes:
-      label: Как повторить ошибку
+      label: Как повторить проблему
       description: Опишите действия по шагам
     validations:
       required: true
+
   - type: textarea
     id: expected
     attributes:
       label: Ожидаемый результат
     validations:
       required: true
+
   - type: textarea
     id: actual
     attributes:
-      label: Что произошло
+      label: Что произошло на самом деле
     validations:
       required: true
+
+  - type: dropdown
+    id: retry
+    attributes:
+      label: Manual Retry
+      options:
+        - Не использовал
+        - Использовал — помог
+        - Использовал — не помог
+        - Retry был недоступен
+
+  - type: input
+    id: timing
+    attributes:
+      label: Примерное время выполнения
+      placeholder: 45 мин / 2 ч / 90 сек
+
   - type: textarea
     id: attachments
     attributes:
       label: Скриншоты и диагностика
-      description: Перед публикацией удалите личные данные
+      description: Перед публикацией обязательно удалите личные данные и API-ключи
+
   - type: checkboxes
     id: privacy
     attributes:
       label: Проверка приватности
       options:
-        - label: Я проверил приложенные файлы и удалил личные данные
+        - label: Я проверил приложенные файлы и удалил личные данные, приватный текст проектов и API-ключи
           required: true
