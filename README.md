@@ -1,3 +1,34 @@
+# LocalModAI — Preview Builds
+
+**LocalModAI** is an offline-first modular AI platform for Windows focused on local LLMs, project memory, multi-chat workflows, background session summaries, and verified file actions.
+
+The project is currently at **MVP 0.5 Preview**. This is an early testing build, not a finished product.
+
+## Current preview: v0.5.0-alpha.5
+
+The current preview includes:
+
+- local GGUF models through the bundled `llama.cpp Runtime Pack`;
+- external API models;
+- project memory and multiple related chats inside one project;
+- background BASE / CHECKPOINT session summaries and recovery;
+- built-in text file viewing and editing;
+- image and GIF preview;
+- Workspace file actions with verified execution;
+- AI creation and reading of text files;
+- protection against false “done” responses when no real file action was completed;
+- additional runtime and performance diagnostics.
+
+Some local models may take longer to complete Workspace tasks because LocalModAI can require another attempt when a model skips a required action or claims success too early. This behavior is intentional and is designed to reduce false completion reports.
+
+**Full English documentation is coming soon.**
+
+For now, the detailed documentation below is available in Russian.
+
+Latest release: [v0.5.0-alpha.5](https://github.com/alexkomarovkarelia-cell/LocalModAI-Preview/releases/tag/v0.5.0-alpha.5)
+
+---
+
 # LocalModAI — Preview-сборки
 
 LocalModAI — локальная модульная ИИ-платформа в активной разработке.
